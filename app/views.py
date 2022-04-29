@@ -15,11 +15,12 @@ def index():
     return render_template('index.html',message = message)
 
 
-@app.route('/movie/<int:movie_id>')
+@app.route('/movie/movie_id>')
 def movie(movie_id):
 
     '''
     View movie page function that returns the movie details page and its data
     '''
+    title = f'You are viewing {movie_id}'
     return render_template('movie.html',id = movie_id)
 

@@ -1,5 +1,4 @@
 from app import app
-
 import urllib.request,json
 from .models import movie
 
@@ -7,11 +6,8 @@ Movie = movie.Movie
 
 # Getting api key
 api_key = app.config['MOVIE_API_KEY']
-
 # Getting the movie base url
 base_url = app.config["MOVIE_API_BASE_URL"]
-
-
 def get_movies(category):
     '''
     Function that gets the json response to our url request
@@ -27,7 +23,7 @@ def get_movies(category):
         if get_movies_response['results']:
             movie_results_list = get_movies_response['results']
             movie_results = process_results(movie_results_list)
-    return movie_results        
+
 def process_results(movie_list):
     '''
     Function  that processes the movie result and transform them to a list of Objects
@@ -47,16 +43,11 @@ def process_results(movie_list):
         vote_average = movie_item.get('vote_average')
         vote_count = movie_item.get('vote_count')
 
-        
-        movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
-        movie_results.append(movie_object)
+        if poster:
+            movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
+            movie_results.append(movie_object)
 
-
-
-    return movie_results
-
-        
+    return movie_results          
 
 
     
-

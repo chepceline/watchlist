@@ -1,4 +1,4 @@
-{% import 'macros.html' as macro%} 
+{% import 'macros.html' as macro%}
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,23 +9,31 @@
         <title> Welcome to the best Movie Review website </title>
         {% endif %}
     </head>
-       
     <body>
+        <h1>Hello World</h1>
+
         <!-- Popular movie section  -->
         <h3> Popular Movies</h3>
          <ul>
-            {{ macro.displayMovieList(Popular)}}
+            {% for popular_movie in popular %}
+                <li>{{ popular_movie.title}}</li>
+            {% endfor %}
         </ul>
         <!-- Upcoming movie  -->
         <h3> Upcoming Movies </h3>
          <ul>
-            {{ macro.displayMovieList(upcoming)}}
+            {% for upcoming_movie in upcoming %}
+                <li>{{ upcoming_movie.title}}</li>
+            {% endfor %}
         </ul>
         <!-- Now showing movie -->
         <h3>Now Showing</h3>
          <ul>
-            {{ macro.displayMovieList(now_showing)}}
+            {% for now_showing_movie in now_showing %}
+                <li>{{ now_showing_movie.title}}</li>
+            {% endfor %}
         </ul>
+
 
     </body>
 </html>
